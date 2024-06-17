@@ -414,7 +414,7 @@ const getWatchHistory = asyncHandler(async(req,res) => {
       $match : {
         _id : new mongoose.Types.ObjectId(req.user?._id)
       }
-    }
+    },
     {
       $lookup : {
         from : "videos",
@@ -463,5 +463,6 @@ export {
   updateAccountDetails,
   updateUserAvatar,
   updateUserCoverImage,
+  getUserChannelProfile,
   getWatchHistory,
 };
