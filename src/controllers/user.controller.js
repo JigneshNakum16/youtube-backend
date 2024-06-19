@@ -5,7 +5,6 @@ import { User } from "../models/user.models.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import fs from "fs";
 import jwt from "jsonwebtoken";
-import { response } from "express";
 import mongoose from "mongoose";
 
 const generateAccessTokenAndRefreshToken = async (userId) => {
@@ -89,12 +88,12 @@ const registerUser = asyncHandler(async (req, res) => {
     );
 
     if (!createdUser) {
-      throw new ApiError(500, "Error creating user");
+      throw new ApiError(500, "Server error creating user");
     }
 
     return res
       .status(201)
-      .json(new ApiResponse(200, createdUser, "User registered successfully"));
+      .json(new ApiResponse(201, createdUser, "User registered successfully"));
   } catch (error) {
     console.error("Error during user registration:", error);
 
