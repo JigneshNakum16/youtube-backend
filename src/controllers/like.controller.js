@@ -234,7 +234,6 @@ const getLikedVideos = asyncHandler(async (req, res) => {
     },
   ]);
 
-  console.log("getAllLikes", getAllLikes);
 
   if (!getAllLikes) {
     throw new ApiError(500, "Server error while getting all likes videos");
