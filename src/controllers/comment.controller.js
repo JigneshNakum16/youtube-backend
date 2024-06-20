@@ -78,9 +78,6 @@ const getVideoComment = asyncHandler(async (req, res) => {
       },
     ]);
 
-    console.log("videoId", videoId);
-    console.log("getComment", getComment);
-
     if (!getComment) {
       throw new ApiError(500, "Server error while getting comments");
     }
@@ -91,7 +88,6 @@ const getVideoComment = asyncHandler(async (req, res) => {
     };
 
     const comments = await Comment.aggregatePaginate(getComment, options);
-    console.log("comments : ", comments);
 
     if (!comments) {
       throw new ApiError(500, "Server error while loading comments section");
