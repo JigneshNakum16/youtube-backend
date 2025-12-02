@@ -1,0 +1,12 @@
+echo "🔍 Running Gitleaks to check for secrets..."
+gitleaks protect --staged --verbose
+
+if [ $? -ne 0 ]; then
+  echo ""
+  echo "❌ Gitleaks found secrets in your staged files!"
+  echo "Please remove the secrets before committing."
+  echo ""
+  exit 1
+fi
+
+echo "✅ No secrets detected. Proceeding with commit..."
